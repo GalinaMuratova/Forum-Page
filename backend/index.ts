@@ -6,9 +6,10 @@ import fileDb from "./fileDb";
 const app = express();
 const port = 8000;
 
+app.use(cors());
 app.use(express.json());
 app.use('/', postsRouter);
-app.use(cors());
+
 
 const run = async ()=> {
     await fileDb.init();

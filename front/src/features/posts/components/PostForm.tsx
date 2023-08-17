@@ -4,7 +4,6 @@ import { PostMutation } from '../../../types';
 import FileInput from '../../../components/UI/FileInput/FileInput';
 import { useAppDispatch } from '../../../app/hooks';
 import { createPost } from '../postsThunk';
-import { useNavigate } from 'react-router-dom';
 
 const PostForm = () => {
   const dispatch = useAppDispatch();
