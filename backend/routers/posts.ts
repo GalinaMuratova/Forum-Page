@@ -1,6 +1,7 @@
 import express from "express";
 import fileDb from "../fileDb";
 import {PostWithoutId} from "../types";
+import {imagesUpload} from "../multer";
 const postsRouter = express.Router();
 
 postsRouter.get('/', async (req, res) => {
@@ -9,14 +10,14 @@ postsRouter.get('/', async (req, res) => {
     res.send(posts);
 });
 
-postsRouter.post('/', async (req, res) => {
-    if (!req.body.author || !req.body.image) {
-        res.status(400).send({"error": "Field author | Field image"})
+postsRouter.post('/', imagesUpload.single('image'), async (req, res) => {
+    if (!req.body.message) {
+        res.status(400).send({"error": "Field message"})
     }
     const post: PostWithoutId = {
         author: req.body.author,
         message: req.body.message,
-        image: req.body.image
+        image: req.file ? 'images/' + req.file.filename : null
     };
 
     const savedPost = await fileDb.addItem(post);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardActionArea, CardContent,Grid, Typography } from '@mui/material';
+import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 
 interface Props {
   author: string | null,
@@ -8,10 +8,26 @@ interface Props {
 }
 
 const PostCard:React.FC<Props> = ({author, message,image}) => {
-  // let productImage = null;
-  // if (image) {
-  //   productImage = 'http://127.0.0.1:8000' + '/' + image;
-  // }
+  let productImage = null;
+  if (image) {
+    productImage = 'http://127.0.0.1:8000' + '/' + image;
+  }
+
+  let cardMed = <Typography sx={{height:140}}></Typography>;
+  if (productImage){
+    cardMed = <CardMedia
+      sx={{height:140}}
+      image={productImage}
+      title='user-img'
+    />
+  }
+
+  let authorBlock = <Typography gutterBottom variant="h5" component="div"> Anonymous</Typography>
+  if (author) {
+    authorBlock = <Typography gutterBottom variant="h5" component="div">
+      Author: { author }
+    </Typography>;
+  }
 
   return (
     <>
@@ -19,18 +35,12 @@ const PostCard:React.FC<Props> = ({author, message,image}) => {
         <Card>
           <CardActionArea>
             <CardContent>
-              {/*<CardMedia*/}
-              {/*  sx={{height:140}}*/}
-              {/*  image={productImage}*/}
-              {/*  title='user-img'*/}
-              {/*/>*/}
-              <Typography gutterBottom variant="h5" component="div">
-                { author }
-              </Typography>
+              {cardMed}
+              {authorBlock}
               <Grid container justifyContent="space-between" alignItems="center">
                 <Typography variant="h6" color="text.secondary">
                   <strong>
-                    { message }
+                   Message: { message }
                   </strong>
                 </Typography>
               </Grid>
