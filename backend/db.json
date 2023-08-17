@@ -1,1 +1,8 @@
-[{"author":"Somebody","message":"something","image":"zvcx","id":"9f209e19-1e9f-44ca-999a-61f8ee790b32"}]
+[
+  {
+    "author": "Somebody",
+    "message": "something",
+    "image": "zvcx",
+    "id": "9f209e19-1e9f-44ca-999a-61f8ee790b32"
+  }
+]

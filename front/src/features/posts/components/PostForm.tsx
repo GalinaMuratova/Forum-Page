@@ -2,17 +2,27 @@ import React, { useState } from 'react';
 import { Button, Grid, TextField } from '@mui/material';
 import { PostMutation } from '../../../types';
 import FileInput from '../../../components/UI/FileInput/FileInput';
+import { useAppDispatch } from '../../../app/hooks';
+import { createPost } from '../postsThunk';
+import { useNavigate } from 'react-router-dom';
 
 const PostForm = () => {
+  const dispatch = useAppDispatch();
   const [state, setState] = useState<PostMutation>({
     author: '',
     message:'',
     image: null
   });
 
-  const onSubmit = (e:React.FormEvent) => {
+  const onSubmit = async (e:React.FormEvent) => {
     e.preventDefault();
     console.log('something')
+    await dispatch(createPost(state));
+    setState((prevState) =>({
+      author: '',
+      message:'',
+      image: null
+    }))
   };
 
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
