@@ -3,7 +3,7 @@ import { Button, Grid, TextField } from '@mui/material';
 import { PostMutation } from '../../../types';
 import FileInput from '../../../components/UI/FileInput/FileInput';
 import { useAppDispatch } from '../../../app/hooks';
-import { createPost } from '../postsThunk';
+import { createPost, fetchPosts } from '../postsThunk';
 
 const PostForm = () => {
   const dispatch = useAppDispatch();
@@ -21,7 +21,8 @@ const PostForm = () => {
       author: '',
       message:'',
       image: null
-    }))
+    }));
+    await dispatch(fetchPosts());
   };
 
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

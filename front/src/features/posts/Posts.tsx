@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PostForm from './components/PostForm';
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { useAppDispatch} from '../../app/hooks';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
@@ -17,10 +17,8 @@ const Posts = () => {
   return (
     <>
       <PostForm />
-      <div style={{backgroundColor: 'aliceblue', padding:'20px'}}>
-        <h2 style={{textAlign:'center'}}>Все записи</h2>
-      </div>
-      <Grid container spacing={2}>
+      <Typography component='div' variant='h4' style={{textAlign:'center', margin:"20px"}}>All posts</Typography>
+      <Grid container spacing={2} style={{backgroundColor: 'aliceblue', padding:'20px'}}>
         {posts.map((el) => (
           <PostCard key={el.id} author={el.author} message={el.message} image={el.image} />
         ))}

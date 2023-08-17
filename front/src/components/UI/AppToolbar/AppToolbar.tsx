@@ -1,14 +1,16 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Container, Toolbar, Typography } from '@mui/material';
 
 const AppToolbar = () => {
   return (
     <AppBar position="sticky" sx={{ mb: 2 }}>
-      <Toolbar>
-        <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-          <Typography component='h2' variant="h4">Форум любителей оливок</Typography>
-        </Typography>
-      </Toolbar>
+      <Container>
+        <Toolbar>
+          <Typography variant="h4" component="div" style={{margin:'20px 0 20px 0'}} sx={{ flexGrow: 1 }}>
+            <Typography component='h2' variant="h4">Olive and Pineapple Pizza Lovers Forum</Typography>
+          </Typography>
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 };

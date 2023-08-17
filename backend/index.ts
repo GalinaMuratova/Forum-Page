@@ -15,7 +15,7 @@ app.use(express.static('public'));
 const run = async ()=> {
     await fileDb.init();
     app.listen(port, () => {
-        console.log(`Server started on ${port}`);
+        console.log(`Server started on ${port} port`);
     });
 };
 
